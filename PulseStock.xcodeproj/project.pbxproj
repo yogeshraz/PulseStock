@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B1CCD3462F5966B4007ABADF /* Exceptions for "PulseStock" folder in "PulseStock" target */ = {
+		B1CCD4672F59A4A9007ABADF /* Exceptions for "PulseStock" folder in "PulseStock" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Resources/Info.plist,
@@ -43,7 +43,7 @@
 		B1CCD1F62F5941AF007ABADF /* PulseStock */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B1CCD3462F5966B4007ABADF /* Exceptions for "PulseStock" folder in "PulseStock" target */,
+				B1CCD4672F59A4A9007ABADF /* Exceptions for "PulseStock" folder in "PulseStock" target */,
 			);
 			path = PulseStock;
 			sourceTree = "<group>";
@@ -413,7 +413,7 @@
 				DEVELOPMENT_TEAM = RL8KYH9H6V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PulseStock/Info.plist;
+				INFOPLIST_FILE = PulseStock/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -446,7 +446,7 @@
 				DEVELOPMENT_TEAM = RL8KYH9H6V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PulseStock/Info.plist;
+				INFOPLIST_FILE = PulseStock/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
