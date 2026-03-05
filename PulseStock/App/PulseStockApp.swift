@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct PulseStockApp: App {
+
+    @StateObject private var router = NavigationStore<AppRoute>()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppRootView()
+                .environmentObject(router)
         }
     }
 }
