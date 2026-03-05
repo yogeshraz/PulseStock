@@ -43,9 +43,5 @@ struct FeedView: View {
                 }
             }
         }
-
-        /*.onReceive(DeepLinkHandler.shared.symbolPublisher) { symbol in
-            router.push(.stockDetail(symbol: symbol))
-        }*/
     }
 }

@@ -11,6 +11,8 @@ struct Constants {
     
     static let socketURL = "wss://ws.postman-echo.com/raw"
     
+    static let updateInterval: TimeInterval = 2
+    
     static let stockSymbols: [String] = [
         "AAPL","GOOG","TSLA","AMZN","MSFT",
         "NVDA","META","NFLX","INTC","AMD",
@@ -18,6 +20,4 @@ struct Constants {
         "UBER","LYFT","SHOP","SQ","TWTR",
         "SONY","SAP","V","MA","PYPL"
     ]
-    
-    static let updateInterval: TimeInterval = 2
 }
