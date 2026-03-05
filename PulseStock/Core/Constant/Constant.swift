@@ -46,6 +46,11 @@ struct Constants {
         "JPM": "JPMorgan Chase & Co. provides banking and financial services.",
         "BAC": "Bank of America Corporation provides banking and financial products.",
         "DIS": "The Walt Disney Company creates entertainment and media experiences.",
-        "SONY": "Sony Group Corporation builds entertainment, electronics, and gaming products."
+        "SONY": "Sony Group Corporation builds entertainment, electronics, and gaming products.",
+        "LYFT": "Lyft, Inc. operates ride-sharing and transportation services.",
+        "TWTR": "Twitter (X) provides social networking and microblogging services.",
+        "SAP": "SAP SE develops enterprise software for business operations.",
+        "V": "Visa Inc. operates global digital payment networks.",
+        "MA": "Mastercard Incorporated provides payment processing services.",
     ]
 }

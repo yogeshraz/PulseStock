@@ -8,70 +8,71 @@
 import Foundation
 import Combine
 
-final class StockWebSocketService: ObservableObject {
-    
+final class StockWebSocketService: ObservableObject, StockWebSocketServiceProtocol {
+
     private let socketClient = WebSocketClient()
-    
+
     private var timer: AnyCancellable?
-    
     private var cancellables = Set<AnyCancellable>()
-    
+
     @Published private(set) var stocks: [Stock] = []
-    
     @Published var isConnected: Bool = false
-    
+
+    var stocksPublisher: Published<[Stock]>.Publisher { $stocks }
+    var connectionPublisher: Published<Bool>.Publisher { $isConnected }
+
     init() {
         setupStocks()
         bindSocket()
     }
-    
+
     private func setupStocks() {
-        
+
         stocks = Constants.stockSymbols.map {
             Stock(symbol: $0, price: Double.random(in: 100...500), previousPrice: 0)
         }
     }
-    
+
     private func bindSocket() {
-        
+
         socketClient.publisher
             .sink { [weak self] text in
                 self?.handleMessage(text)
             }
             .store(in: &cancellables)
     }
-    
+
     func start() {
-        
+
         socketClient.connect()
         isConnected = true
-        
+
         timer = Timer.publish(every: Constants.updateInterval, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 self?.sendRandomUpdates()
             }
     }
-    
+
     func stop() {
-        
+
         timer?.cancel()
         socketClient.disconnect()
         isConnected = false
     }
-    
+
     private func sendRandomUpdates() {
-        
+
         for stock in stocks {
-            
+
             let newPrice = Double.random(in: 100...500)
-            
+
             let message = "\(stock.symbol):\(newPrice)"
-            
+
             socketClient.send(message)
         }
     }
-    
+
     private func handleMessage(_ message: String) {
 
         let parts = message.split(separator: ":")
@@ -98,9 +99,8 @@ final class StockWebSocketService: ObservableObject {
             }
         }
     }
-    
+
     private func sortStocks() {
-        
         stocks.sort { $0.price > $1.price }
     }
 }

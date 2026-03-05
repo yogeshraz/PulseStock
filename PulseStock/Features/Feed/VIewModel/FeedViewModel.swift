@@ -5,38 +5,32 @@
 //  Created by Yogesh Raj on 05/03/26.
 //
 
-import Foundation
 import Combine
+import SwiftUI
 
 final class FeedViewModel: ObservableObject {
-    
+
     @Published var stocks: [Stock] = []
-    
     @Published var isConnected: Bool = false
-    
-    private let service: StockWebSocketService
-    
+
+    private let service: StockWebSocketServiceProtocol
     private var cancellables = Set<AnyCancellable>()
-    
-    init(service: StockWebSocketService) {
-        
+
+    init(service: StockWebSocketServiceProtocol) {
+
         self.service = service
-        
-        bind()
-    }
-    
-    private func bind() {
-        
-        service.$stocks
+
+        service.stocksPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: &$stocks)
-        
-        service.$isConnected
+
+        service.connectionPublisher
+            .receive(on: DispatchQueue.main)
             .assign(to: &$isConnected)
     }
-    
+
     func toggleFeed() {
-        
+
         if isConnected {
             service.stop()
         } else {

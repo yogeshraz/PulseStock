@@ -13,7 +13,7 @@ struct Stock: Identifiable, Codable {
 
     let symbol: String
     var price: Double
-    var previousPrice: Double
+    var previousPrice: Double = 0
     var flashColor: FlashColor?
 
     var priceChange: Double {
@@ -22,6 +22,11 @@ struct Stock: Identifiable, Codable {
 
     var isPositive: Bool {
         priceChange >= 0
+    }
+
+    mutating func updatePrice(_ newPrice: Double) {
+        previousPrice = price
+        price = newPrice
     }
 }
 
