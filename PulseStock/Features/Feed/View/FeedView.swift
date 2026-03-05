@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct FeedView: View {
-
+    
     @ObservedObject var viewModel: FeedViewModel
     @EnvironmentObject var router: NavigationStore<AppRoute>
-
+    
     var body: some View {
-
+        
         List {
-
+            
             ForEach(viewModel.stocks) { stock in
-
+                
                 Button {
-
+                    
                     router.push(.symbolDetail(symbol: stock.symbol))
-
+                    
                 } label: {
-
+                    
                     FeedRowView(stock: stock)
                 }
                 .buttonStyle(.plain)
@@ -34,19 +34,19 @@ struct FeedView: View {
         .listStyle(.plain)
         .navigationTitle("Stocks")
         .toolbar {
-
+            
             ToolbarItem(placement: .navigationBarLeading) {
-
+                
                 HStack(spacing: 6) {
-
+                    
                     Circle()
                         .fill(viewModel.isConnected ? .green : .red)
                         .frame(width: 10, height: 10)
                 }
             }
-
+            
             ToolbarItem(placement: .navigationBarTrailing) {
-
+                
                 Button(viewModel.isConnected ? "Stop" : "Start") {
                     viewModel.toggleFeed()
                 }
