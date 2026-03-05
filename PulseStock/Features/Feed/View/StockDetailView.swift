@@ -14,7 +14,7 @@ struct StockDetailView: View {
 
     var body: some View {
 
-        VStack(spacing: 20) {
+        VStack(spacing: 24) {
 
             if let stock = viewModel.stocks.first(where: { $0.symbol == symbol }) {
 
@@ -23,19 +23,24 @@ struct StockDetailView: View {
                     .fontWeight(.bold)
 
                 Text(String(format: "%.2f", stock.price))
-                    .font(.system(size: 40, weight: .bold))
+                    .font(.system(size: 46, weight: .bold))
+                    .foregroundColor(stock.isPositive ? .green : .red)
                     .animation(.easeInOut(duration: 0.25), value: stock.price)
 
                 HStack(spacing: 6) {
 
-                    Image(systemName: stock.isPositive ? "arrow.up" : "arrow.down")
+                    Image(systemName: stock.isPositive ? "arrow.up.right" : "arrow.down.right")
 
                     Text(stock.isPositive ? "Price Increased" : "Price Decreased")
                 }
-                .foregroundColor(stock.isPositive ? .priceUp : .priceDown)
+                .font(.headline)
+                .foregroundColor(stock.isPositive ? .green : .red)
 
-                Text("This is a demo description for \(stock.symbol) stock.")
-                    .padding()
+                Divider()
+
+                Text("Live market data streaming via WebSocket.")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
 
             } else {

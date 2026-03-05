@@ -14,26 +14,35 @@ struct FeedView: View {
 
     var body: some View {
 
-        List(viewModel.stocks) { stock in
+        List {
 
-            Button {
+            ForEach(viewModel.stocks) { stock in
 
-                router.push(.symbolDetail(symbol: stock.symbol))
+                Button {
 
-            } label: {
+                    router.push(.symbolDetail(symbol: stock.symbol))
 
-                FeedRowView(stock: stock)
+                } label: {
+
+                    FeedRowView(stock: stock)
+                }
+                .buttonStyle(.plain)
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
             }
         }
+        .listStyle(.plain)
         .navigationTitle("Stocks")
-
         .toolbar {
 
             ToolbarItem(placement: .navigationBarLeading) {
 
-                Circle()
-                    .fill(viewModel.isConnected ? .green : .red)
-                    .frame(width: 10, height: 10)
+                HStack(spacing: 6) {
+
+                    Circle()
+                        .fill(viewModel.isConnected ? .green : .red)
+                        .frame(width: 10, height: 10)
+                }
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
