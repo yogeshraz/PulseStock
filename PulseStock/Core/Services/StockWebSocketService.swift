@@ -29,7 +29,7 @@ final class StockWebSocketService: ObservableObject, StockWebSocketServiceProtoc
     private func setupStocks() {
         
         stocks = Constants.stockSymbols.map {
-            Stock(symbol: $0, price: Double.random(in: 100...500), previousPrice: 0)
+            Stock(symbol: $0, price: PriceGenerator.generate(), previousPrice: 0)
         }
     }
     
@@ -65,7 +65,7 @@ final class StockWebSocketService: ObservableObject, StockWebSocketServiceProtoc
         
         for stock in stocks {
             
-            let newPrice = Double.random(in: 100...500)
+            let newPrice = PriceGenerator.generate()
             
             let message = "\(stock.symbol):\(newPrice)"
             
